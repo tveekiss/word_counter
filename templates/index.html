@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Word Counter</title>
+</head>
+<body>
+    <h1>Word Counter</h1>
+    <form action="{% url 'load' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="file">
+        <button type="submit">Загрузить файл</button>
+    </form>
+
+    <form action="{% url 'wordcount' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="word" placeholder="Введите слово">
+        <button type="submit">Подсчитать</button>
+    </form>
+
+    <form action="{% url 'clear' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Очистить память</button>
+    </form>
+</body>
+</html>
